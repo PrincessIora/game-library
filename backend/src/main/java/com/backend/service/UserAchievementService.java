@@ -2,10 +2,10 @@ package com.backend.service;
 
 import com.backend.entity.UserAchievement;
 import com.backend.repository.UserAchievementRepository;
-
-import java.time.LocalDateTime;
+import org.springframework.stereotype.Service;
 import java.util.List;
 
+@Service
 public class UserAchievementService {
     private final UserAchievementRepository repo;
 

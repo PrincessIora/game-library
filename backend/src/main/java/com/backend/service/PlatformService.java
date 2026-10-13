@@ -2,9 +2,11 @@ package com.backend.service;
 
 import com.backend.entity.Platform;
 import com.backend.repository.PlatformRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PlatformService {
     private final PlatformRepository repo;
 

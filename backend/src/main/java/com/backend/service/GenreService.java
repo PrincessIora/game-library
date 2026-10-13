@@ -2,9 +2,11 @@ package com.backend.service;
 
 import com.backend.entity.Genre;
 import com.backend.repository.GenreRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GenreService {
     private final GenreRepository repo;
 
@@ -12,7 +14,7 @@ public class GenreService {
         this.repo = repo;
     }
 
-    public List<Genre> findAllGenres() {
+    public List<Genre> getAllGenres() {
         return repo.findAll();
     }
 

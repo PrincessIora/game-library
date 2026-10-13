@@ -39,8 +39,8 @@ public class CollectionService {
         repo.save(collection);
     }
 
-    public boolean updateCollection(Collection collection) {
-        Collection existing = repo.findById(collection.getId()).orElse(null);
+    public boolean updateCollection(int id, Collection collection) {
+        Collection existing = repo.findById(id).orElse(null);
 
         if (existing == null) {
             return false;

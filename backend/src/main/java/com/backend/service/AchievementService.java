@@ -39,7 +39,7 @@ public class AchievementService {
         repo.save(achievement);
     }
 
-    public boolean updateCategory(int id, Achievement achievement) {
+    public boolean updateAchievement(int id, Achievement achievement) {
         Achievement existing = repo.findById(id).orElse(null);
 
         if (existing == null) {
