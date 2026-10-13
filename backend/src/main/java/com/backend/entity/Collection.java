@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 public class Collection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +19,7 @@ public class Collection {
 
     @OneToMany
     @JoinColumn(name = "game_id")
-    private int game_id;
+    private List<Integer> game_id;
 
     private OwnershipStatus ownership_status = OwnershipStatus.WANTED;
     private PlayStatus play_status =  PlayStatus.NOT_YET_PLAYED;
@@ -45,11 +47,11 @@ public class Collection {
         this.user_id = user_id;
     }
 
-    public int getGame_id() {
+    public List<Integer> getGame_ids() {
         return game_id;
     }
 
-    public void setGame_id(int game_id) {
+    public void setGame_ids(List<Integer> game_id) {
         this.game_id = game_id;
     }
 
