@@ -10,6 +10,6 @@ import java.util.List;
 public interface  CollectionRepository extends JpaRepository<Collection, Integer> {
     List<Collection> findByUserId(int id);
     List<Collection> findByPlayStatus(PlayStatus playStatus);
-    List<Collection> findByOwnerShipStatus(OwnershipStatus ownershipStatus);
+    List<Collection> findByOwnershipStatus(OwnershipStatus ownershipStatus);
 
 }

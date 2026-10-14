@@ -48,7 +48,7 @@ public class AchievementService {
 
         existing.setName(achievement.getName());
         existing.setDescription(achievement.getDescription());
-        existing.setIcon_url(achievement.getIcon_url());
+        existing.setIconUrl(achievement.getIconUrl());
         repo.save(existing);
         return true;
     }

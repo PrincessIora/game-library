@@ -1,9 +1,11 @@
 package com.backend.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+@Entity
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,16 +13,16 @@ public class Game {
 
     private String title;
     private String description;
-    private String cover_url;
-    private String release_date;
+    private String coverUrl;
+    private String releaseDate;
     private String dev;
     private String publisher;
 
-    public Game(String title, String description, String cover_url, String release_date, String dev, String publisher) {
+    public Game(String title, String description, String coverUrl, String releaseDate, String dev, String publisher) {
         this.title = title;
         this.description = description;
-        this.cover_url = cover_url;
-        this.release_date = release_date;
+        this.coverUrl = coverUrl;
+        this.releaseDate = releaseDate;
         this.dev = dev;
         this.publisher = publisher;
     }
@@ -51,20 +53,20 @@ public class Game {
         this.description = description;
     }
 
-    public String getCover_url() {
-        return cover_url;
+    public String getCoverUrl() {
+        return coverUrl;
     }
 
-    public void setCover_url(String cover_url) {
-        this.cover_url = cover_url;
+    public void setCoverUrl(String coverUrl) {
+        this.coverUrl = coverUrl;
     }
 
-    public String getRelease_date() {
-        return release_date;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setRelease_date(String release_date) {
-        this.release_date = release_date;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public String getDev() {

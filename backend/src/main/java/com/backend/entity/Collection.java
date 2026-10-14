@@ -8,27 +8,23 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+@Entity
 public class Collection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private int user_id;
+    private int userId;
+    private List<Integer> gameId;
 
-    @OneToMany
-    @JoinColumn(name = "game_id")
-    private List<Integer> game_id;
-
-    private OwnershipStatus ownership_status = OwnershipStatus.WANTED;
-    private PlayStatus play_status =  PlayStatus.NOT_YET_PLAYED;
+    private OwnershipStatus ownershipStatus = OwnershipStatus.WANTED;
+    private PlayStatus playStatus =  PlayStatus.NOT_YET_PLAYED;
 
     public Collection() {
 
     }
 
-    public Collection(int user_id, int game_id) {
+    public Collection(int userId, int gameId) {
 
     }
     public int getId() {
@@ -39,35 +35,35 @@ public class Collection {
         this.id = id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public List<Integer> getGame_ids() {
-        return game_id;
+    public List<Integer> getGameIds() {
+        return gameId;
     }
 
-    public void setGame_ids(List<Integer> game_id) {
-        this.game_id = game_id;
+    public void setGameIds(List<Integer> gameId) {
+        this.gameId = gameId;
     }
 
-    public OwnershipStatus getOwnership_status() {
-        return ownership_status;
+    public OwnershipStatus getOwnershipStatus() {
+        return ownershipStatus;
     }
 
-    public void setOwnership_status(OwnershipStatus ownership_status) {
-        this.ownership_status = ownership_status;
+    public void setOwnership_status(OwnershipStatus ownershipStatus) {
+        this.ownershipStatus = ownershipStatus;
     }
 
-    public PlayStatus getPlay_status() {
-        return play_status;
+    public PlayStatus getPlayStatus() {
+        return playStatus;
     }
 
-    public void setPlay_status(PlayStatus play_status) {
-        this.play_status = play_status;
+    public void setPlayStatus(PlayStatus playStatus) {
+        this.playStatus = playStatus;
     }
 }

@@ -29,11 +29,11 @@ public class CollectionService {
     }
 
     public List<Collection> searchByOwnerShipStatus(OwnershipStatus ownershipStatus) {
-        return repo.findByOwnerShipStatus(ownershipStatus);
+        return repo.findByOwnershipStatus(ownershipStatus);
     }
 
     public void addCollection(Collection collection) {
-        if (repo.findByUserId(collection.getUser_id()) != null) {
+        if (repo.findByUserId(collection.getUserId()) != null) {
             throw new IllegalArgumentException("Collection already exists");
         }
         repo.save(collection);
@@ -46,12 +46,12 @@ public class CollectionService {
             return false;
         }
 
-        if (existing.getUser_id() != collection.getUser_id()) {
+        if (existing.getUserId() != collection.getUserId()) {
             return false;
         }
-        existing.setGame_ids(collection.getGame_ids());
-        existing.setOwnership_status(collection.getOwnership_status());
-        existing.setPlay_status(collection.getPlay_status());
+        existing.setGameIds(collection.getGameIds());
+        existing.setOwnership_status(collection.getOwnershipStatus());
+        existing.setPlayStatus(collection.getPlayStatus());
         repo.save(existing);
         return true;
     }

@@ -1,34 +1,28 @@
 package com.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
+@Entity
 public class Achievement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @ManyToOne
-    @JoinColumn(name = "game_id")
-    private int game_id;
+    private int gameId;
 
     private String name;
     private String description;
-    private String icon_url;
+    private String iconUrl;
 
     public Achievement() {
 
     }
 
-    public Achievement(int game_id, String name, String description, String icon_url) {
-        this.game_id = game_id;
+    public Achievement(int gameId, String name, String description, String icon_url) {
+        this.gameId = gameId;
         this.name = name;
         this.description = description;
-        this.icon_url = icon_url;
+        this.iconUrl = icon_url;
     }
 
     public int getId() {
@@ -39,12 +33,12 @@ public class Achievement {
         this.id = id;
     }
 
-    public int getGame_id() {
-        return game_id;
+    public int getGameId() {
+        return gameId;
     }
 
-    public void setGame_id(int game_id) {
-        this.game_id = game_id;
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
     }
 
     public String getName() {
@@ -63,11 +57,11 @@ public class Achievement {
         this.description = description;
     }
 
-    public String getIcon_url() {
-        return icon_url;
+    public String getIconUrl() {
+        return iconUrl;
     }
 
-    public void setIcon_url(String icon_url) {
-        this.icon_url = icon_url;
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 }

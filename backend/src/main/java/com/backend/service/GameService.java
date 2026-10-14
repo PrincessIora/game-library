@@ -24,13 +24,13 @@ public class GameService {
 
     public Game findByName(String name) {
         return repo
-                .findByNameIgnoreCase(name)
+                .findByTitleIgnoreCase(name)
                 .orElse(null);
 
     }
 
     public List<Game> searchByName(String name) {
-        return repo.findByNameContainingIgnoreCase(name);
+        return repo.findByTitleContainingIgnoreCase(name);
     }
 
     public List<Game> searchByDev(String dev) {
@@ -59,8 +59,8 @@ public class GameService {
         }
         existing.setTitle(game.getTitle());
         existing.setDescription(game.getDescription());
-        existing.setCover_url(game.getCover_url());
-        existing.setDev(game.getRelease_date());
+        existing.setCoverUrl(game.getCoverUrl());
+        existing.setDev(game.getReleaseDate());
         existing.setDev(game.getDev());
         existing.setPublisher(game.getPublisher());
         repo.save(existing);

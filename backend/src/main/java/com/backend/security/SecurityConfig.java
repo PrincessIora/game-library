@@ -1,4 +1,4 @@
-package com.backend.security;
-
-public class SecurityConfig {
-}
+//package com.backend.security;
+//
+//public class SecurityConfig {
+//}

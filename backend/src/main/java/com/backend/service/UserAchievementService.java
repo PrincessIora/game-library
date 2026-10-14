@@ -44,9 +44,9 @@ public class UserAchievementService {
         if (existing == null) {
             return false;
         }
-        existing.setAchievement_id(userAchievement.getAchievement_id());
+        existing.setAchievement_id(userAchievement.getAchievementId());
         existing.setCompleted(userAchievement.isCompleted());
-        existing.setCompleted_at(userAchievement.getCompleted_at());
+        existing.setCompletedAt(userAchievement.getCompletedAt());
         repo.save(existing);
         return true;
     }
