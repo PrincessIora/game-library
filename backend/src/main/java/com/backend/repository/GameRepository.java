@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface  GameRepository extends JpaRepository<Game, Integer> {
 
     Optional<Game> findByTitleIgnoreCase(String title);
+    Optional<Game> findByExternalGameId(long externalGameId);
 
     List<Game> findByTitleContainingIgnoreCase(String title);
     List<Game> findByDevContainingIgnoreCase(String dev);

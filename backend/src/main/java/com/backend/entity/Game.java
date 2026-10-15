@@ -2,6 +2,9 @@ package com.backend.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "games")
 public class Game {
@@ -9,12 +12,29 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private long externalGameId;
     private String title;
     private String description;
     private String coverUrl;
     private String releaseDate;
     private String dev;
     private String publisher;
+
+    @ManyToMany
+    @JoinTable(
+            name = "game_genres",
+            joinColumns = @JoinColumn(name = "game_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private List<Genre> genres = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "game_platforms",
+            joinColumns = @JoinColumn(name = "game_id"),
+            inverseJoinColumns = @JoinColumn(name = "platform_id")
+    )
+    private List<Platform> platforms = new ArrayList<>();
 
     public Game(String title, String description, String coverUrl, String releaseDate, String dev, String publisher) {
         this.title = title;
@@ -81,5 +101,29 @@ public class Game {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public long getExternalGameId() {
+        return externalGameId;
+    }
+
+    public void setExternalGameId(long externalGameId) {
+        this.externalGameId = externalGameId;
+    }
+
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
+
+    public List<Platform> getPlatforms() {
+        return platforms;
+    }
+
+    public void setPlatforms(List<Platform> platforms) {
+        this.platforms = platforms;
     }
 }
