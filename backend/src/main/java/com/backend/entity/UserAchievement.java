@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+
+@Table(name = "user_achievements")
 public class UserAchievement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

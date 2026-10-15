@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "collections")
 public class Collection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,6 +3,7 @@ package com.backend.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "achievements")
 public class Achievement {
 
     @Id

@@ -2,6 +2,7 @@ package com.backend.service;
 
 import com.backend.entity.User;
 import com.backend.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,9 +10,11 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserRepository repo;
+    private final PasswordEncoder encoder;
 
-    public UserService(UserRepository repo) {
+    public UserService(UserRepository repo, PasswordEncoder passwordEncoder) {
         this.repo = repo;
+        this.encoder = passwordEncoder;
     }
 
     public List<User> getAllUsers() {
@@ -32,13 +35,15 @@ public class UserService {
         return repo.findByUsernameContainingIgnoreCase(username);
     }
 
-    public void addUser(User user) {
+    public User addUser(User user) {
         if (findByUsername(user.getUsername()) != null) {
             throw new IllegalArgumentException(
                     "Username '" + user.getUsername() + "' is already in use"
             );
         }
-        repo.save(user);
+
+        user.setPassword(encoder.encode(user.getPassword()));
+        return repo.save(user);
     }
 
     public Boolean updateUser(int id, User user) {
@@ -48,8 +53,9 @@ public class UserService {
         }
 
         existing.setUsername(user.getUsername());
-        existing.setPassword(user.getPassword());
-
+        if(user.getPassword() != null && !user.getPassword().isBlank()) {
+            existing.setPassword(encoder.encode(user.getPassword()));
+        }
         repo.save(existing);
         return true;
 
